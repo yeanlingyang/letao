@@ -1,0 +1,166 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+img {
+  display: block;
+  width: 100%;
+}
+
+
+.lt_container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: pink;
+  max-width: 640px;
+  min-width: 320px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 45px;
+  padding-bottom: 55px;
+}
+
+.lt_header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 45px;
+  background-color: #069;
+  max-width: 640px;
+  min-width: 320px;
+  padding: 0 45px;
+
+  .icon_left,
+  .icon_right {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    top: 0;
+  }
+
+  .icon_left {
+    left: 0;
+  }
+  .icon_right {
+    right: 0;
+  }
+
+  h3 {
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+    font-weight: normal;
+  }
+}
+
+.lt_main {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  // 内部的区域滚动容器的大小, 是position: aboslute; width: 100%; height:100%;
+  // 父元素需要添加定位, 控制区域滚动的大小
+  position: relative;
+}
+
+.lt_footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 55px;
+  background-color: #069;
+
+  li {
+    float: left;
+    width: 25%;
+    text-align: center;
+
+    a {
+      color: #fff;
+      display: block;
+      padding-top: 8px;
+      p {
+        color: #fff;
+      }
+
+
+      &.current {
+        color: orange;
+        p {
+          color: orange;
+        }
+      }
+    }
+  }
+}
+
+
+// 公共的搜索框样式
+.lt_search {
+  padding: 10px;
+  position: relative;
+
+  .search_input {
+    height: 34px;
+    font-size: 12px;
+    margin: 0;
+    border: 1px solid #007AFF;
+    padding-right: 54px;
+    border-radius: 5px;
+  }
+
+  .search_btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 0 5px 5px 0;
+  }
+}
+
+// 公共的产品样式
+.lt_product {
+  padding: 10px;
+
+  li {
+    float: left;
+    width: 48%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+
+    &:nth-child(2n-1) {
+      margin-right: 4%;
+    }
+
+    .price {
+      color: red;
+    }
+    .oldPrice {
+      text-decoration: line-through;
+    }
+
+    img {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto;
+    }
+
+    .mui-ellipsis-2 {
+      height: 40px;
+    }
+  }
+}
+

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>移动乐淘</title>
+  <link rel="stylesheet" href="./lib/fa/css/font-awesome.css">
+  <link rel="stylesheet" href="./lib/mui/css/mui.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/search.css">
+</head>
+
+<body>
+  <!-- 大容器 -->
+  <div class="lt_container">
+    <!-- 头部 -->
+    <div class="lt_header">
+      <a href="javascript:history.go(-1);" class="icon_left"><i class="mui-icon mui-icon-back"></i></a>
+      <h3>搜索中心</h3>
+    </div>
+    <!-- 中间部分 -->
+    <div class="lt_main">
+      <div class="mui-scroll-wrapper">
+        <div class="mui-scroll">
+          <!-- 上面的搜索框 -->
+          <div class="lt_search">
+            <input type="text" class="search_input" placeholder="请输入搜索关键字">
+            <button class="search_btn mui-btn mui-btn-primary">搜索</button>
+          </div>
+
+          <!-- 历史记录 -->
+          <div class="lt_history">
+            <!-- 挖一个巨坑 -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- 底部 -->
+    <div class="lt_footer">
+      <ul>
+        <li><a href="index.html">
+            <i class="fa fa-home"></i>
+            <p>首页</p>
+          </a></li>
+        <li><a href="category.html" class="current">
+            <i class="fa fa-bars"></i>
+            <p>分类页</p>
+          </a></li>
+        <li><a href="cart.html">
+            <i class="fa fa-shopping-cart"></i>
+            <p>购物车</p>
+          </a></li>
+        <li><a href="user.html">
+            <i class="fa fa-user"></i>
+            <p>用户中心</p>
+          </a></li>
+      </ul>
+    </div>
+  </div>
+  </div>
+
+
+   <script type="text/html" id="searchTpl">
+    {{if arr.length===0}}
+    <p>没有更多数据了</p>
+
+    {{else}}
+    <div class="title mui-clearfix">
+        <span class="mui-pull-left">历史记录</span>
+        <span class="mui-pull-right btn_empty"><i class="fa fa-trash">清空历史</i></span>
+      </div>
+      <div class="content">
+        <ul>
+
+          {{each arr v i }}
+          <li>
+            <!-- 获取的每一项的值 -->
+            <a href="searchList.html?key={{v}}" class="mui-pull-left">{{ v }}</a>   
+            <!-- 获取的是index下标 -->
+            <i  data-index='{{ i }}' class="mui-icon mui-icon-closeempty mui-pull-right btn-delete"></i>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+      {{/if}}
+  </script>
+
+  <!-- 引包 -->
+  <script src="./lib/mui/js/mui.js"></script>
+  <script src="./lib/zepto/zepto.min.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/search.js"></script>
+</body>
+
+</html>

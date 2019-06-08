@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>学生管理系统</title>
+  <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="./css/common.css">
+</head>
+<body>
+
+  <!-- 左边的栏 -->
+  <div class="index_left">
+    <div class="brand">
+      <a href="index.html">黑马41期</a>
+    </div>
+    <div class="user">
+      <img src="./images/0002.gif" alt="">
+      <p>超级管理员</p>
+    </div>
+    <div class="nav">
+      <ul>
+        <li><a href="user.html"><i class="glyphicon glyphicon-user"></i>用户管理</a></li>
+        <li><a href="javascript:;" class="sort"><i class="glyphicon glyphicon-list" ></i>分类管理</a>
+            <ul class="child">
+            <li><a href="first.html">一级分类</a></li>
+            <li><a href="second.html">二级分类</a></li>
+          </ul>
+      </li>
+        <li><a href="product.html" class="current"><i class="glyphicon glyphicon-tags"></i>商品管理</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 右边的栏 -->
+  <div class="index_right">
+    <div class="toper">
+      <a href="javascript:;" class='pull-left icon-left'><i class="glyphicon glyphicon-align-justify"></i></a>
+      <a href="javascript:;" class='pull-right icon-right'><i class="glyphicon glyphicon-log-out"></i></a>
+    </div>
+    <div class="container-fluid">
+        <ol class="breadcrumb mt_20">
+            <li><a href="index.html">管理系统</a></li>
+            <li class="active">首页</li>
+          </ol>
+      </div>
+  </div>
+
+
+
+
+
+  <script src="./lib/jquery/jquery.js"></script>
+  <script src="./lib/bootstrap/js/bootstrap.js"></script>
+  <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+  <script src="./js/login.js"></script>
+  <script src="./js/islogin.js"></script>
+  <script src="./js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+
+html,body {
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+//大容器
+.lt_container {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  min-width: 320px;
+  max-width: 640px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  padding-top: 45px;
+  padding-bottom: 55px;
+
+  .lt_header {
+    height: 45px;
+    background-color: #069;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 0 45px;
+    text-align: center;
+
+
+    .icon_left,
+    .icon_right {
+      position: absolute;
+      top: 0;
+      width: 45px;
+      height: 45px;
+      display: block;
+      text-align: center;
+      line-height: 45px;
+      color: #fff;
+      font-size: 20px;
+    }
+    .icon_left {
+      left:0;
+    }
+    .icon_right {
+      right: 0;
+    }
+    h3 {
+      height: 45px;
+      line-height: 45px;
+      margin: 0;
+      color: #fff;
+      font-weight: 400;
+      font-size: 20px;
+    }
+  }
+
+  .lt_main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    // background-color: skyblue;
+  }
+
+
+
+  .lt_footer {
+    height: 55px;
+    width: 100%;
+    background-color: #069;
+    position: absolute;
+    bottom :0;
+    padding-top: 8px;
+
+    li {
+      float: left;
+      width: 25%;
+      text-align: center;
+       a{
+         color: #fff;
+         p {
+          margin: 0;
+          color: #fff; 
+        }
+         &.current {
+          color: orange;
+         p {
+           color: orange;
+         }
+        }
+        
+       }
+     
+      
+    }
+  }
+}
+
+
+.lt_search {
+  padding: 10px;  
+  position: relative;
+  .search_input {
+    height: 34px;
+    font-size: 12px;
+    margin: 0;
+  }
+  .search_btn {
+    position: absolute;
+    right: 10px;
+    top :10px;
+    border-radius: 0 5px 5px 0;
+  }
+}
+
+
+.lt_product {
+  padding: 10px;
+  li {
+    width: 48%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    float: left;
+    margin-bottom: 10px;
+    text-align: center;
+    &:nth-child(2n-1) {
+      margin-right: 4%;
+    }
+
+    .product_left {
+      color: red;
+    }
+    .product_right {
+      text-decoration: line-through;
+    }
+  }
+}

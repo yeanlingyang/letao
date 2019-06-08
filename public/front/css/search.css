@@ -1,0 +1,27 @@
+.lt_history {
+  padding: 0 10px;
+  font-size: 12px;
+}
+.lt_history .title {
+  color: #666;
+  height: 30px;
+  line-height: 30px;
+}
+.lt_history .content {
+  border: 1px dashed red;
+}
+.lt_history .content li {
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px dashed red;
+}
+.lt_history .content li:last-child {
+  border-bottom: none;
+}
+.lt_history .content li a {
+  padding-left: 10px;
+}
+.lt_history .content li i {
+  height: 30px;
+  line-height: 30px;
+}

@@ -1,0 +1,133 @@
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+.mt_150 {
+  margin-top: 150px;
+}
+.mt_20 {
+  margin-top: 20px;
+}
+.login_s {
+  background-color: #222D32;
+}
+.login_s .system {
+  text-align: center;
+}
+.index_left {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 180px;
+  height: 100%;
+  background-color: #222D32;
+  z-index: 999;
+  transition: all 1s;
+}
+.index_left.hidemenu {
+  left: -180px;
+}
+.index_left .brand {
+  width: 100%;
+  height: 50px;
+  background-color: #367FA9;
+  text-align: center;
+  line-height: 50px;
+}
+.index_left .brand a {
+  color: #fff;
+  font-size: 24px;
+}
+.index_left .user {
+  width: 180px;
+  height: 180px;
+  text-align: center;
+  padding-top: 30px;
+}
+.index_left .user img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+.index_left .user p {
+  color: white;
+  font-size: 18px;
+  padding-top: 8px;
+}
+.index_left .nav a {
+  color: #fff;
+  font-size: 14px;
+  height: 40px;
+  display: block;
+  line-height: 40px;
+  padding-left: 40px;
+  border: 3x solid transparent;
+}
+.index_left .nav a.current {
+  background-color: #1D1F21;
+  border-left: 3px solid #069;
+}
+.index_left .nav i {
+  margin-right: 5px;
+}
+.index_left .nav .child {
+  display: none;
+}
+.index_left .nav .child a {
+  padding-left: 60px;
+}
+.index_right {
+  padding-top: 50px;
+  padding-left: 180px;
+  transition: all 1s;
+  height: 1000px;
+}
+.index_right.hidemenu {
+  padding-left: 0px;
+}
+.index_right .toper {
+  padding-left: 180px;
+  height: 50px;
+  width: 100%;
+  background-color: #3C8DBC;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 1s;
+}
+.index_right .toper.hidemenu {
+  padding-left: 0px;
+}
+.index_right .toper a {
+  width: 50px;
+  height: 50px;
+  display: block;
+  text-align: center;
+  line-height: 50px;
+}
+.index_right .toper a i {
+  color: #fff;
+  font-size: 16px;
+}
+.index_right .foot .foot1 {
+  width: 45%;
+  height: 400px;
+}
+.index_right .foot .foot2 {
+  width: 45%;
+  height: 400px;
+}
+.index_right .table th,
+.index_right .table td {
+  text-align: center;
+  vertical-align: middle;
+}

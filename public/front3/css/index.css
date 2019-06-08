@@ -1,0 +1,16 @@
+.lt_nav {
+  padding: 10px;
+}
+.lt_nav li {
+  width: 33.3%;
+  float: left;
+}
+.lt_item li {
+  width: 48%;
+  border: 1px solid #ccc;
+  float: left;
+}
+.lt_item li a {
+  height: 244px;
+  display: block;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>学生管理系统</title>
+  <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="./css/common.css">
+</head>
+<body>
+
+  <!-- 左边的栏 -->
+  <div class="index_left">
+    <div class="brand">
+      <a href="index.html">黑马41期</a>
+    </div>
+    <div class="user">
+      <img src="./images/0002.gif" alt="">
+      <p>超级管理员</p>
+    </div>
+    <div class="nav">
+      <ul>
+        <li><a href="user.html" class="current"><i class="glyphicon glyphicon-user"></i>用户管理</a></li>
+        <li><a href="javascript:;" class="sort"><i class="glyphicon glyphicon-list" ></i>分类管理</a>
+            <ul class="child" >
+            <li><a href="first.html">一级分类</a></li>
+            <li><a href="second.html">二级分类</a></li>
+          </ul>
+      </li>
+        <li><a href="product.html"><i class="glyphicon glyphicon-tags"></i>商品管理</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 右边的栏 -->
+  <div class="index_right">
+    <div class="toper">
+      <a href="javascript:;" class='pull-left icon-left'><i class="glyphicon glyphicon-align-justify"></i></a>
+      <a href="javascript:;" class='pull-right icon-right'><i class="glyphicon glyphicon-log-out"></i></a>
+    </div>
+    <div class="container-fluid">
+        <ol class="breadcrumb mt_20">
+            <li><a href="index.html">管理系统</a></li>
+            <li class="active">首页</li>
+          </ol>
+
+          <table class="table  table-borderd table-hover">
+            <thead> 
+            <tr>
+              <th>序号</th>
+              <th>用户名</th>
+              <th>手机号</th>
+              <th>状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 挖个坑 -->
+          </tbody>
+
+          </table>
+          <div class="text-right">
+            <ul id="pagintor"></ul>
+          </div>
+      </div>
+  </div>
+
+
+
+  <!-- 退出模态框 -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="removeModal">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">温馨提示</h4>
+          </div>
+          <div class="modal-body">
+            <p class="text-danger"><i class="glyphicon glyphicon-info-sign"></i>&nbsp您确定要退出后台管理系统吗？</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary btn-remove">退出</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+    <!-- 启用 禁用模态框 -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="userModal">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">温馨提示</h4>
+          </div>
+          <div class="modal-body">
+            <p class="text-danger"><i class="glyphicon glyphicon-info-sign"></i>&nbsp你确定要执行此操作吗？</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary btn-ok">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <script type="text/html" id="tp1">
+    {{each rows v i}}
+    <tr>
+        <td>{{i+1+(page-1)*size}}</td>
+        <td>{{v.username}}</td>
+        <td>{{v.mobile}}</td>
+        <td>{{v.isDelete==1?"正常":"禁用"}}</td>
+        <td>
+          {{if v.isDelete===0}}
+          <button class="btn btn-danger" data-id='{{v.id}}'>启用</button>
+          {{else}}
+          <button class="btn btn-success" data-id='{{v.id}}'>禁用</button>
+          {{/if}}
+        </td>
+      </tr>
+      {{/each}}
+    </script>
+
+
+  <script src="./lib/jquery/jquery.min.js"></script>
+  <script src="./lib/bootstrap/js/bootstrap.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
+  <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+  <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+  <script src="./js/islogin.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/user.js"></script>
+</body>
+</html>

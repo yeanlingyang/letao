@@ -1,0 +1,154 @@
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+#login_s {
+  background-color: #222D32;
+}
+.login_deng {
+  margin-top: 150px;
+}
+.login_deng .panel-title {
+  text-align: center;
+}
+.mt_20 {
+  margin-top: 20px;
+}
+.index_left {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 180px;
+  height: 100%;
+  background-color: #222D32;
+  z-index: 999;
+  transition: all 1s;
+}
+.index_left.hideleft {
+  left: -180px;
+}
+.index_left .header {
+  width: 100%;
+  height: 50px;
+  background-color: #367FA9;
+}
+.index_left .header .word {
+  text-align: center;
+  height: 50px;
+}
+.index_left .header .word a {
+  font-size: 24px;
+  color: #fff;
+  line-height: 50px;
+  display: block;
+}
+.index_left .user {
+  height: 180px;
+  padding-top: 30px;
+}
+.index_left .user img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+.index_left .user p {
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  padding-top: 6px;
+}
+.index_left .nav {
+  width: 180px;
+  height: 40px;
+}
+.index_left .nav a {
+  width: 100%;
+  height: 40px;
+  display: block;
+  line-height: 40px;
+  color: #fff;
+  padding-left: 40px;
+  border: 3px solid transparent;
+}
+.index_left .nav a.current {
+  background-color: #1D1F21;
+  border-left: 3px solid #069;
+}
+.index_left .nav a span {
+  margin-left: 5px;
+}
+.index_left .nav .child {
+  display: none;
+}
+.index_left .nav .child a {
+  padding-left: 56px;
+}
+.index_right {
+  height: 550px;
+  padding-left: 180px;
+  padding-top: 50px;
+  transition: all 1s;
+}
+.index_right.hideleft {
+  padding-left: 0px;
+}
+.index_right .top {
+  padding-left: 180px;
+  width: 100%;
+  height: 50px;
+  background-color: #3C8DBC;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 1s;
+}
+.index_right .top.hideleft {
+  padding-left: 0px;
+}
+.index_right .top .icon_left {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+.index_right .top .icon_right {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+.index_right .foot .foot1 {
+  width: 45%;
+  height: 400px;
+}
+.index_right .foot .foot2 {
+  width: 45%;
+  height: 400px;
+}
+.index_right .user_main .table > thead > tr > th,
+.index_right .user_main .table > tbody > tr > th,
+.index_right .user_main .table > tfoot > tr > th,
+.index_right .user_main .table > thead > tr > td,
+.index_right .user_main .table > tbody > tr > td,
+.index_right .user_main .table > tfoot > tr > td {
+  vertical-align: middle;
+  text-align: center;
+}
+.index_right .table th,
+.index_right .table td {
+  vertical-align: middle;
+  text-align: center;
+}
