@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>乐淘电商</title>
+  <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
+  <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
+  <link rel="stylesheet" href="./css/common.css">
+</head>
+
+<body>
+
+  <!-- 左侧侧边栏 -->
+  <div class="lt_aside">
+    <!-- 标题 -->
+    <div class="brand">
+      <a href="index.html">黑马41期</a>
+    </div>
+
+    <!-- 用户 -->
+    <div class="user">
+      <img src="./images/02.jpg" alt="">
+      <p>超级管理员</p>
+    </div>
+
+    <!-- 导航 -->
+    <!-- 侧边栏一般是要复用的 
+         1. 基于 jquery 的组件化复用, 都是要依赖于后端来实现组件的拼接的
+         2. 真正的完全的前后分离, 还是用 vue  react  angular  
+    -->
+    <div class="nav">
+      <ul>
+        <li><a href="user.html"><i class="glyphicon glyphicon-user"></i><span>用户管理</span></a></li>
+        <li>
+          <a href="javascript:;" class="category"><i class="glyphicon glyphicon-list"></i><span>分类管理</span></a>
+
+          <!-- 二级导航, 子菜单 -->
+          <ul class="child">
+            <li><a href="first.html">一级分类</a></li>
+            <li><a href="second.html">二级分类</a></li>
+          </ul>
+
+        </li>
+        <li><a class="current" href="product.html"><i class="glyphicon glyphicon-tags"></i><span>商品管理</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 右侧主体 -->
+  <!-- container-fluid 流式布局容器, 宽度100%, 默认有左右padding -->
+  <div class="lt_main">
+
+    <div class="lt_topbar">
+      <a href="javascript:;" class="pull-left icon_menu"><i class="glyphicon glyphicon-align-justify"></i></a>
+      <a href="javascript:;" class="pull-right icon_logout"><i class="glyphicon glyphicon-log-out"></i></a>
+    </div>
+
+    <div class="container-fluid">
+      <!-- 路径导航 -->
+      <ol class="breadcrumb mt_20">
+        <li><a href="index.html">管理系统</a></li>
+        <li class="active">商品管理</li>
+      </ol>
+
+      <div class="lt_content">
+
+        <!-- 添加按钮 -->
+        <button class="btn btn-default" id="addBtn">添加商品</button>
+
+        <table class="table table-bordered table-hover mt_20">
+          <thead>
+            <tr>
+              <th width='10%'>序号</th>
+              <th width='25%'>商品名称</th>
+              <th width='25%'>商品描述</th>
+              <th width='10%'>商品库存</th>
+              <th width='10%'>商品尺寸</th>
+              <th width='10%'>商品状态</th>
+              <th width='10%'>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 挖个坑 -->
+          </tbody>
+        </table>
+
+        <div class="pull-right">
+          <!-- 分页容器 -->
+          <ul id="paginator"></ul>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <!-- 退出模态框 -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="logoutModal">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <!-- 头部 -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">温馨提示</h4>
+        </div>
+        <!-- 中间 -->
+        <div class="modal-body">
+          <p class="text-danger"><i class="glyphicon glyphicon-info-sign"></i>您确定要退出后台管理系统吗？</p>
+        </div>
+        <!-- 底部 -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="logoutBtn">退出</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 添加模态框 -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form id="form">
+          <!-- 头部 -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">添加商品</h4>
+          </div>
+          <!-- 中间 -->
+          <div class="modal-body">
+            <!-- form-group 不要少, 规范 -->
+
+            <div class="form-group">
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                  <span id="dropdownText">请选择二级分类</span>
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <!-- 挖个坑 -->
+                </ul>
+              </div>
+
+              <input type="hidden" name="brandId">
+            </div>
+
+            <div class="form-group">
+              <input type="text" name="proName" class="form-control" placeholder="请输入商品名称">
+            </div>
+
+            <div class="form-group">
+              <textarea name="proDesc" class="form-control" rows="3" placeholder="请输入商品描述"></textarea>
+            </div>
+
+            <div class="form-group">
+              <input type="text" name="num" class="form-control" placeholder="请输入商品库存">
+            </div>
+
+            <div class="form-group">
+              <input type="text" name="size" class="form-control" placeholder="请输入商品尺码">
+            </div>
+
+            <div class="form-group">
+              <input type="text" name="oldPrice" class="form-control" placeholder="请输入商品原价">
+            </div>
+
+            <div class="form-group">
+              <input type="text" name="price" class="form-control" placeholder="请输入商品现价">
+            </div>
+
+            <div class="form-group">
+              <label class="btn btn-default" for="fileupload">图片上传</label>
+              <!-- 
+                name 指定后台用于接收文件的参数名  
+                data-url 指定后台文件上传的接口地址
+                multiple 指定后, 可以选择多个文件
+              -->
+              <input type="file" multiple  name="pic1" data-url="/product/addProductPic" class="hidden" id="fileupload">
+            </div>
+
+            <div class="form-group" id="imgBox">
+              <!-- <img width="100" src="./images/none.png" alt=""> -->
+              <!-- 校验的input需要放在 form-group 中, 专门准备一个只用于校验的隐藏域, 不用于提交 -->
+              <input type="hidden" name="picStatus">
+            </div>
+            
+
+          </div>
+          <!-- 底部 -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-primary">添加</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/html" id="productTpl">
+    {{ each rows v i }}
+      <tr>
+        <td>{{ i+1 + (page-1)*size }}</td>
+        <td>{{ v.proName }}</td>
+        <td>{{ v.proDesc }}</td>
+        <td>{{ v.num }}</td>
+        <td>{{ v.size }}</td>
+
+        <!-- 1 正面的状态, 0 反面的状态,  1: 上架状态,  0: 下架状态 -->
+        <td>
+          {{ v.statu === 1 ? '已上架' : '下架' }}
+        </td>
+        <td>
+          <!-- statu 1 上架状态, 显示的应该是下架按钮 -->
+          {{ if v.statu === 1 }}
+            <button class="btn btn-danger">下架</button>
+          {{ else }}
+            <button class="btn btn-success">上架</button>
+          {{ /if }}
+          
+        </td>
+      </tr>
+    {{ /each }}
+  </script>
+
+  <script type="text/html" id="dropdownTpl">
+    {{ each rows v i }}
+      <li><a data-id="{{ v.id }}" href="#">{{ v.brandName }}</a></li>
+    {{ /each }}
+  </script>
+
+
+  <script src="./lib/jquery/jquery.js"></script>
+  <script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+  <script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
+
+  <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+  <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
+  <script src="./lib/nprogress/nprogress.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/isLogin.js"></script>
+  <script src="./js/product.js"></script>
+
+
+</body>
+
+</html>

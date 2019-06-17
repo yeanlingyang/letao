@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>乐淘商城</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!-- 引入字体图标库的css -->
+  <link rel="stylesheet" href="./lib/fa/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./lib/mui/css/mui.css">
+  <link rel="stylesheet" href="./css/product.css">
+</head>
+<body>
+
+<!-- 全屏容器 -->
+<div class="lt_container">
+
+  <!-- 乐淘头部 -->
+  <div class="lt_header">
+    <a href="javascript:history.go(-1);" class="icon_left"><i class="mui-icon mui-icon-back"></i></a>
+    <h3>商品详情</h3>
+    <a href="javascript:location.reload();" class="icon_right"><i class="mui-icon mui-icon-reload"></i></a>
+  </div>
+
+  <!-- 乐淘主体 -->
+  <div class="lt_main">
+    <div class="mui-scroll-wrapper">
+      <div class="mui-scroll">
+        <!-- 挖个天坑 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 前往购物车 -->
+  <div class="lt_go_cart">
+
+    <a href="cart.html" class="mui-pull-left">前往购物车</a>
+
+    <div class="mui-pull-right">
+      <button class="mui-btn mui-btn-danger" id="addCart">加入购物车</button>
+      <button class="mui-btn mui-btn-warning">买买买</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- 模板 -->
+<!-- 
+  模板语法 artTemplate
+  1. 标准语法   {{ }}    特点: 简单, 简洁
+     {{ username }}
+
+  2. 原生语法   <% %>    特点: 逻辑性强, 可以直接写 js 语句
+     <%= username %>
+ -->
+<script type="text/html" id="productTpl">
+  <!-- 轮播图 -->
+  <div class="mui-slider">
+    <!-- 图片区域 -->
+    <div class="mui-slider-group mui-slider-loop">
+      <!-- 添加假图, 最后一张图片 -->
+      <div class="mui-slider-item mui-slider-item-duplicate">
+        <a href="#"><img src="{{ pic[pic.length-1].picAddr }}" /></a>
+      </div>
+
+      {{ each pic v i }}
+        <div class="mui-slider-item"><a href="#"><img src="{{ v.picAddr }}" /></a></div>
+      {{ /each }}
+
+      <!-- 添加假图, 第一张图片 -->
+      <div class="mui-slider-item mui-slider-item-duplicate">
+        <a href="#"><img src="{{ pic[0].picAddr }}" /></a>
+      </div>
+    </div>
+
+    <!-- 小圆点结构 -->
+    <div class="mui-slider-indicator">
+      {{ each pic v i }}
+        <div class="mui-indicator {{ i === 0 ? 'mui-active' : '' }}"></div>
+      {{ /each }}
+    </div>
+
+  </div>
+
+  <!-- 产品标题 -->
+  <div class="lt_pro_name item_box">
+    <strong>{{ proName }}</strong>
+  </div>
+
+  <!-- 产品价格 -->
+  <div class="lt_price item_box">
+    价格:
+    <span class="price">¥{{ price }}</span>
+    <span class="oldPrice">¥{{ oldPrice }}</span>
+  </div>
+
+  <!-- 产品尺码 -->
+  <div class="lt_size item_box">
+    尺码:
+    <% 
+      // 里面有一个size变量可以直接用, 值: "36-46"
+      var arr = size.split('-');  // ['36', '46'];
+      var start = arr[0]; // 36;
+      var end = arr[1];  // 46
+      for (var i = start; i <= end; i++) { 
+    %>
+      <span>{{ i }}</span>
+    <% 
+      } 
+    %>
+  </div>
+
+  <!-- 产品数量 -->
+  <div class="lt_num item_box">
+    数量:
+    <!-- 
+      data-numbox-min="1" 配置输入的最小值
+      data-numbox-max="10" 配置输入的最大值
+      data-numbox-step="1" 配置步长
+    -->
+    <div class="mui-numbox" data-numbox-min="1" data-numbox-max="{{ num }}" data-numbox-step="1">
+      <!-- "-"按钮，点击可减小当前数值 -->
+      <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+      <input class="mui-numbox-input" type="number" />
+      <!-- "+"按钮，点击可增大当前数值 -->
+      <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+    </div>
+
+
+    <span>剩余数量: {{ num }}双 </span>
+
+  </div>
+
+  <!-- 详情描述 -->
+  <div class="lt_price item_box">
+    详情: {{ proDesc }}
+  </div>
+</script>
+
+
+
+<script src="./lib/zepto/zepto.min.js"></script>
+<script src="./lib/mui/js/mui.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/product.js"></script>
+</body>
+</html>

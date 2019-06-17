@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>乐淘电商</title>
+  <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
+  <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
+  <link rel="stylesheet" href="./css/common.css">
+</head>
+
+<body>
+
+  <!-- 左侧侧边栏 -->
+  <div class="lt_aside">
+    <!-- 标题 -->
+    <div class="brand">
+      <a href="index.html">黑马41期</a>
+    </div>
+
+    <!-- 用户 -->
+    <div class="user">
+      <img src="./images/02.jpg" alt="">
+      <p>超级管理员</p>
+    </div>
+
+    <!-- 导航 -->
+    <!-- 侧边栏一般是要复用的 
+         1. 基于 jquery 的组件化复用, 都是要依赖于后端来实现组件的拼接的
+         2. 真正的完全的前后分离, 还是用 vue  react  angular  
+    -->
+    <div class="nav">
+      <ul>
+        <li><a class="current" href="user.html"><i class="glyphicon glyphicon-user"></i><span>用户管理</span></a></li>
+        <li>
+          <a href="javascript:;" class="category"><i class="glyphicon glyphicon-list"></i><span>分类管理</span></a>
+
+          <!-- 二级导航, 子菜单 -->
+          <ul class="child">
+            <li><a href="first.html">一级分类</a></li>
+            <li><a href="second.html">二级分类</a></li>
+          </ul>
+
+        </li>
+        <li><a href="product.html"><i class="glyphicon glyphicon-tags"></i><span>商品管理</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 右侧主体 -->
+  <!-- container-fluid 流式布局容器, 宽度100%, 默认有左右padding -->
+  <div class="lt_main">
+
+    <div class="lt_topbar">
+      <a href="javascript:;" class="pull-left icon_menu"><i class="glyphicon glyphicon-align-justify"></i></a>
+      <a href="javascript:;" class="pull-right icon_logout"><i class="glyphicon glyphicon-log-out"></i></a>
+    </div>
+
+    <div class="container-fluid">
+      <!-- 路径导航 -->
+      <ol class="breadcrumb mt_20">
+        <li><a href="index.html">管理系统</a></li>
+        <li class="active">用户管理</li>
+      </ol>
+
+      <div class="lt_content">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th width="10%">序号</th>
+              <th width="20%">用户名</th>
+              <th width="30%">手机号</th>
+              <th width="20%">状态</th>
+              <th width="20%">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 挖个坑 -->
+          </tbody>
+        </table>
+
+        <div class="pull-right">
+          <!-- 容器决定了将来分页按钮的位置 -->
+          <ul id="paginator"></ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- 退出模态框 -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="logoutModal">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <!-- 头部 -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">温馨提示</h4>
+        </div>
+        <!-- 中间 -->
+        <div class="modal-body">
+          <p class="text-danger"><i class="glyphicon glyphicon-info-sign"></i>您确定要退出后台管理系统吗？</p>
+        </div>
+        <!-- 底部 -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="logoutBtn">退出</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 启用禁用模态框 -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="userModal">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <!-- 头部 -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">温馨提示</h4>
+        </div>
+        <!-- 中间 -->
+        <div class="modal-body">
+          <p class="text-danger"><i class="glyphicon glyphicon-info-sign"></i>你确定要执行此操作吗？</p>
+        </div>
+        <!-- 底部 -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="confirmBtn">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/html" id="tpl">
+    {{ each rows v i }}
+      <tr>
+        <!-- 总计第几条 = 当前页第几条 + 前面页一共多少条 -->
+        <td>{{ i + 1 + (page-1) * size }}</td>
+        <td>{{ v.username }}</td>
+        <td>{{ v.mobile }}</td>
+        <!-- 
+          isDelete  1 都是正向的状态, 0 是负面的状态
+          1: 当前用户已启用, 是正常的
+          0: 当前用户被禁用
+        -->
+        <td>
+          {{ v.isDelete === 1 ? '正常' : '禁用' }}
+        </td>
+        <td>
+          <!-- 如果是 1, 表示正常, 显示禁用按钮 -->
+          {{ if v.isDelete === 1 }}
+            <button class="btn btn-danger" data-id="{{ v.id }}">禁用</button>
+          {{ else }}
+            <button class="btn btn-success" data-id="{{ v.id }}">启用</button>
+          {{ /if }}
+        </td>
+      </tr>
+    {{ /each }}
+  </script>
+
+
+  <script src="./lib/jquery/jquery.js"></script>
+  <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+  <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
+  <script src="./lib/nprogress/nprogress.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/isLogin.js"></script>
+  <script src="./js/user.js"></script>
+
+
+</body>
+
+</html>
